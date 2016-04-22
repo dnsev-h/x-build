@@ -1,0 +1,30 @@
+{
+	"name": "x-build example",
+	"version": "@:../package.json#version",
+	"author": "dnsev-h",
+	"description": "x-build example",
+	"namespace": "dnsev-h",
+	"urls": {
+		"homepage": "https://dnsev-h.github.io/x-build/",
+		"support": "https://github.com/dnsev-h/x-build/issues",
+		"update_base": "https://raw.githubusercontent.com/dnsev-h/x-build/master/",
+		"changelog": "https://raw.githubusercontent.com/dnsev-h/x-build/master/changelog"
+	},
+	"inputs": [ "./main.js" ],
+	"output": "../builds/x-build.user.js",
+	"icon48": null,
+	"icon64": null,
+	"targets": [
+		"http://example.website/*"
+	],
+	"connect_targets": [
+		"example.website"
+	],
+	"gm_permissions": [
+		"GM_xmlhttpRequest",
+		"GM_setValue",
+		"GM_getValue",
+		"GM_deleteValue",
+		"GM_listValues"
+	]
+}
