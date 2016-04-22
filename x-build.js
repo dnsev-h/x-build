@@ -32,6 +32,7 @@
 		".jpg": "image/jpeg",
 		".jpeg": "image/jpeg",
 		".css": "text/css",
+		".svg": "image/svg+xml",
 		"": "text/plain"
 	};
 
@@ -169,7 +170,7 @@
 			return (n1.index > n2.index) ? -1 : 1;
 		};
 		var indent = function (src, tabstr, i) {
-			var i, ii, line;
+			var ii, line;
 			src = src.split("\n");
 			for (ii = src.length; i < ii; ++i) {
 				line = src[i];
@@ -191,7 +192,7 @@
 
 	var get_tabbing = function (text, position) {
 		var tabbing = "",
-			c, o;
+			c;
 		while (--position >= 0) {
 			c = text[position];
 			switch (c) {
@@ -374,7 +375,7 @@
 	var remove_special_comments = function (source) {
 		return source.replace(/([\r\n]\s*)?\/\*\s*(jshint|globals)\s+.*\*\/(?:\r?\n)?/g, "");
 	};
-	
+
 
 	var uniquify = function (array) {
 		var obj = {},
