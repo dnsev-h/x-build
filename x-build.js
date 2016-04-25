@@ -146,7 +146,7 @@
 
 			for (i = 0, ii = this.new_nodes.length; i < ii; ++i) {
 				if (i > 0) {
-					full_src += nl + nl;
+					full_src += nl;
 				}
 
 				src = this.new_nodes[i].source;
@@ -241,7 +241,7 @@
 		style: function (content, settings) {
 			var file = path.normalize(path.resolve(settings.file, content || "")),
 				src = get_source(file, settings.data);
-			src = new CleanCSS({}).minify(src).styles;
+			src = new CleanCSS({ roundingPrecision: -1 }).minify(src).styles;
 
 			if (settings.quote !== null) {
 				settings.quote = null;
@@ -249,6 +249,26 @@
 			}
 
 			settings.data.files.push(file);
+
+			return src;
+		},
+		styles: function (content, settings) {
+			var files = content.split(","),
+				src = "",
+				file, i, ii;
+
+			for (i = 0, ii = files.length; i < ii; ++i) {
+				file = path.normalize(path.resolve(settings.file, files[i]));
+				settings.data.files.push(file);
+				src += get_source(file, settings.data);
+			}
+
+			src = new CleanCSS({ roundingPrecision: -1 }).minify(src).styles;
+
+			if (settings.quote !== null) {
+				settings.quote = null;
+				src = JSON.stringify(src);
+			}
 
 			return src;
 		},
