@@ -1,6 +1,6 @@
 {
 	"name": "x-build",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "dnsev-h",
 	"description": "Nice script for userscript building",
 	"dependencies": {
